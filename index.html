@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenalan Yuk!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffb6c1;
+            padding: 50px;
+            color: #d63384;
+        }
+        .container {
+            background: #ffe4e9;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(255, 105, 180, 0.5);
+            display: inline-block;
+            max-width: 400px;
+            border: 3px dashed #ff69b4;
+        }
+        .button {
+            background: #ff1493;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #ff69b4;
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .message-box {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #ffdde1;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(255, 105, 180, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="NIKI - Take A Chance With Me (Official Lyric Video)-yt.savetube.me.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <div class="container">
+        <h1>Text box for "C"ewe berkacamata</h1>
+        <button class="button" id="openBtn" onclick="startMessages()">💌</button>
+        <span id="openedEnvelope" class="hidden">📨</span>
+        <p id="message" class="message-box hidden">Haii, dibaca ya ca </p>
+        <p id="message2" class="message-box hidden">Biodata Aku<br><br>
+            Nama: Fathur<br>
+            Umur: 20 tahun<br>
+            Hobi: Main game, main bola, nonton film, tidur & menghayal wkwk<br>
+            Love Language: Semuanya aku kuasai terutama physical touch ❤️<br>
+            Makanan favorit: Nasi goreng 🍛<br>
+            Minuman favorit: Pop ice taro & kopi ☕
+        </p>
+        
+        <p id="message3" class="message-box hidden">
+            sebelumnya maaf ya aku udah suka sama kamu padahal kita baru kenal dan belum tau satu sama lain. aku mau kenal kamu lebih jauh<br>
+        </p>
+        <p id="message4" class="message-box hidden">
+            waktu kita nonton, aku refleks pegang tangan kamu karna love language ku physical touch. Entah kamu nyaman atau ga, tapi jujur aku ngerasa nyaman banget<br>
+        </p>
+        <p id="message5" class="message-box hidden">
+            aku gatau bakalan bisa milikin kamu atau ga, tapi yang pasti aku mau bilang makasih karna kamu udah hadir di dunia ini. aku seneng bisa kenal kamu
+        </p>
+        <button class="button hidden" id="prevBtn" onclick="prevMessage()">Previous</button>
+        <button class="button hidden" id="nextBtn" onclick="nextMessage()">Next</button>
+    </div>
+    <script>
+        let currentMessage = 0;
+        const messages = ["message", "message2", "message3", "message4", "message5"];
+
+        function startMessages() {
+            document.getElementById("openBtn").classList.add("hidden");
+            document.getElementById("openedEnvelope").classList.remove("hidden");
+            document.getElementById(messages[0]).classList.remove("hidden");
+            document.getElementById("nextBtn").classList.remove("hidden");
+        }
+
+        function nextMessage() {
+            if (currentMessage < messages.length - 1) {
+                document.getElementById(messages[currentMessage]).classList.add("hidden");
+                currentMessage++;
+                document.getElementById(messages[currentMessage]).classList.remove("hidden");
+                document.getElementById("prevBtn").classList.remove("hidden");
+            }
+            if (currentMessage === messages.length - 1) {
+                document.getElementById("nextBtn").classList.add("hidden");
+            }
+        }
+        
+        function prevMessage() {
+            if (currentMessage > 0) {
+                document.getElementById(messages[currentMessage]).classList.add("hidden");
+                currentMessage--;
+                document.getElementById(messages[currentMessage]).classList.remove("hidden");
+                document.getElementById("nextBtn").classList.remove("hidden");
+            }
+            if (currentMessage === 0) {
+                document.getElementById("prevBtn").classList.add("hidden");
+            }
+        }
+    </script>
+</body>
+</html>
